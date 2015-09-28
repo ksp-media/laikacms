@@ -22,7 +22,7 @@
             <button class="btn btn-primary btn-block" id="btn-seminar-save" onclick="__submitForm($('#page-form'));"><i class="fa fa-save"></i> Speichern</button>
             <button class="btn btn-primary  btn-block" id="btn-seminar-preview"><i class="fa fa-eye"></i> Vorschau</button>
             <button class="btn btn-primary  btn-block" id="btn-seminar-release"><i class="fa fa-check"></i> Freigeben</button>
-            <a class="btn btn-danger  btn-block" href="/{{$cmsprefix}}/page/{{$page->id}}/delete" onclick="return confirm('Wirklich?');
+            <a class="btn btn-danger  btn-block" href="/{{$cmsprefix}}/cms/page/{{$page->id}}/delete" onclick="return confirm('Wirklich?');
                     return false"><i class="fa fa-trash"></i> Löschen</a>
         </div>
     </div>

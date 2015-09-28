@@ -63,6 +63,12 @@ class CmsController extends BaseController {
         $service = new \KSPM\LCMS\Service\TagParserService($page->template, $page->content);
         return \View::make('laikacms::cms.pages.form', array('page' => $page, 'content' => $service->getResult()));
     }
+	
+    public function deletePageAction($id){
+        $page = \KSPM\LCMS\Model\Page::find($id);
+        $page->delete();
+        return \Redirect::to("/"._LCMS_PREFIX_."/cms/pages")->with('message', 'page not deleted ...');
+    }
     
     public function savePageAction(){
         if (key_exists('id', $_POST['page'])) {
