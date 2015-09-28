@@ -68,7 +68,7 @@
                         @endif
                         @endforeach
                         @if(in_array('assets', $coremodules))
-                        <li @if($current_module == "assets") class="active" @endif><a href="/{{$cmsprefix}}/assets/folder/1" title="Dateien"><i class="fa fa-image-o"></i><span class="nav-label">Dateimanager</span></a></li>
+                        <li @if($current_module == "assets") class="active" @endif><a href="/{{$cmsprefix}}/assets/folder/1" title="Dateien"><i class="fa fa-file-image-o"></i><span class="nav-label">Dateimanager</span></a></li>
                         @endif
                         <li> <a href="/{{$cmsprefix}}/logout">
                                 <i class="fa fa-sign-out"></i> <span class="nav-label">Abmelden</span>
