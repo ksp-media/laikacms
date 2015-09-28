@@ -1,0 +1,1 @@
+<input type="text" class="form-control" name="page[content][{{$c['key']}}]" value="{{$c['value']}}" />

@@ -1,0 +1,1 @@
+<textarea class="form-control wysiwyg-text" name="page[content][{{$c['key']}}]" style="width:100%; height: 250px;">{{$c['value']}}</textarea>
