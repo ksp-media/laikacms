@@ -13,7 +13,8 @@
     </div>
     <div class="ibox-content">
         <div class="dd" id="page-structure">
-                        {!! KSPM\LCMS\Model\Page::htmlTree() !!}
+
+                        {!! \KSPM\LCMS\Model\Page::htmlTree() !!}
                     </div>
         <div class="clearfix"></div>
     </div>

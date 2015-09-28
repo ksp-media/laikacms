@@ -1,5 +1,5 @@
 $(document).ready(function(){
-    $('.\KSPM\LCMS\-editable').each(function(){
+    $('.laikacms-editable').each(function(){
         $(this).mouseover(function(){
         })
     })

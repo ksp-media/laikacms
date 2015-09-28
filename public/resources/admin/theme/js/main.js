@@ -93,11 +93,11 @@ $('document').ready(function () {
             $(this).unbind('click');
             $(this).unbind('mouseover');
             $(this).on('click', function () {
-                location.href = '/' + \KSPM\LCMS\_prefix + '/cms/page/' + $(this).attr('data-id') + '/edit';
+                location.href = '/' + laikacms_prefix + '/cms/page/' + $(this).attr('data-id') + '/edit';
             });
         });
         $('#page-structure').on('change', function () {
-            $.post('/' + \KSPM\LCMS\_prefix + '/cms/page/updatetree', {'pagetree': $('#page-structure').nestable('serialize')}, function (response) {
+            $.post('/' + laikacms_prefix + '/cms/page/updatetree', {'pagetree': $('#page-structure').nestable('serialize')}, function (response) {
             })
         });
     }
@@ -130,13 +130,13 @@ Jbkcms.UI = {
 
 Jbkcms.User = {
     loadUserDetailModal: function (userid) {
-        $.get('/' + \KSPM\LCMS\_prefix + '/user/form/' + userid, function (response) {
+        $.get('/' + laikacms_prefix + '/user/form/' + userid, function (response) {
             $('#user-form-modal').remove();
             $('body').append(response);
             $('#user-form-modal').modal('show')
             $('#user-form-modal-save').unbind('click');
             $('#user-form-modal-save').click(function () {
-                $.post('/' + \KSPM\LCMS\_prefix + '/user/form', $('#user-form').serialize(), function (response) {
+                $.post('/' + laikacms_prefix + '/user/form', $('#user-form').serialize(), function (response) {
                     $('#user-form-modal').modal('hide')
                     location.href = location.href;
                 })

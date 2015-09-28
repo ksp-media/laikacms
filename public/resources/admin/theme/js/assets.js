@@ -23,7 +23,7 @@ Jbkcms.Assets = {
             });
 
             $(this).on('change', function () {
-                $.post('/' + \KSPM\LCMS\_prefix + '/assets/folder/update', {'id': $(this).attr('data-id'), 'attribute': $(this).attr('data-attribute'), 'value': $(this).html()}, function () {
+                $.post('/' + laikacms_prefix + '/assets/folder/update', {'id': $(this).attr('data-id'), 'attribute': $(this).attr('data-attribute'), 'value': $(this).html()}, function () {
                     console.log('updated')
                 })
             });
@@ -31,7 +31,7 @@ Jbkcms.Assets = {
     },
     initUploadButton: function () {
         $('.btn-upload').dropzone({
-            url: "/" + \KSPM\LCMS\_prefix + "/assets/upload/" + Jbkcms.Assets.currentFolderId,
+            url: "/" + laikacms_prefix+ "/assets/upload/" + Jbkcms.Assets.currentFolderId,
             paramName: "file",
             success: Jbkcms.Assets.handleUpload,
             'previewsContainer': '.upload-preview'
@@ -78,7 +78,7 @@ Jbkcms.AssetManager = {
 
     },
     loadModal: function () {
-        $.get('/' + \KSPM\LCMS\_prefix + '/assets/manager', function (response) {
+        $.get('/' + laikacms_prefix + '/assets/manager', function (response) {
             $('#assetmanager-modal').remove();
             $('body').append(response);
             $('#assetmanager-modal').modal('show');
