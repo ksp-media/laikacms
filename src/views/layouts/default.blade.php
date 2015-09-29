@@ -50,7 +50,7 @@
                         @if (isset($bModule->actions))
                         @foreach($bModule->actions as $mAction)
                         <li @if($current_module == $bModule->module) class="active" @endif>
-                             <a href="#" title="{{$mAction->label}}">
+                             <a href="/{{$cmsprefix}}/{{$mAction->route}}" title="{{$mAction->label}}">
                                 <i class="fa {{$mAction->icon}}"></i>
                                 <span class="nav-label">{{$mAction->label}}</span>@if(isset($mAction->subs)) <span class="fa arrow"></span> @endif</a>
                             @if(isset($mAction->subs))
