@@ -14,7 +14,7 @@
 
 
     </head>
-    <body class="fixed-sidebar minibar">
+    <body class="fixed-sidebar">
         <div id="wrapper">
             <nav class="navbar-default navbar-static-side" role="navigation">
                 <div class="sidebar-collapse">
@@ -54,7 +54,7 @@
                                 <i class="fa {{$mAction->icon}}"></i>
                                 <span class="nav-label">{{$mAction->label}}</span>@if(isset($mAction->subs)) <span class="fa arrow"></span> @endif</a>
                             @if(isset($mAction->subs))
-                            <ul class="nav nav-second-level collapse" style="" aria-expanded="false">
+                            <ul class="nav nav-second-level collapse @if($current_module == $bModule->module) in @endif" style="" aria-expanded="true">
 
                             @foreach($mAction->subs as $sAction)
                                 <li class="active">
