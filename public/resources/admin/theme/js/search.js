@@ -13,7 +13,7 @@ Jbkcms.Search = {
     
     request: function(val){
         if(this.config.route){
-            $.get('/'+\KSPM\LCMS\_prefix+'/'+this.config.route + '?q=' + val, function(response){
+            $.get('/'+ laikacms_prefix+'/'+this.config.route + '?q=' + val, function(response){
                 Jbkcms.Search.responseHandler(response)
             })
         }
