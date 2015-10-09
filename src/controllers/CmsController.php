@@ -61,7 +61,7 @@ class CmsController extends BaseController {
     public function showEditPageForm($id){
         $page = \KSPM\LCMS\Model\Page::find($id);
         $service = new \KSPM\LCMS\Service\TagParserService($page->template, $page->content);
-        return \View::make('laikacms::cms.pages.form', array('page' => $page, 'content' => $service->getResult()));
+        return \View::make('laikacms::cms.pages.form', array('page' => $page, 'content' => $service->getBlocks()));
     }
 	
     public function deletePageAction($id){

@@ -64,15 +64,8 @@
 
 
     <div class="ibox float-e-margins">
-        <br />
         <div class="ibox-content">
-
-
-
-
-
-
-            <div class="tab-content">
+			<div class="tab-content">
                 <div role="tabpanel" class="tab-pane" id="options">
                     <div class="panel-body">
                         <label>Titel</label>
@@ -99,19 +92,35 @@
                 </div>
                 <div role="tabpanel" class="tab-pane active" id="content">
                     <div class="panel-body">
-                        <table class="table-bordered table-striped">
-                            @foreach($content as $c)
-                            @if( array_key_exists ('key', $c))
-                            <tr>
-                                <td width="1" nowrap style="padding: 10px;">{{$c['key']}}</td>
-                                <td width="100%" style="padding: 10px;">
-                                    @include('laikacms::cms.pages.types.'.$c['type'], array('c'=>$c))
-                                </td>
-                            </tr>
-                            @endif
-                            @endforeach
-                        </table>
-
+						
+						<ul class="nav nav-tabs" role="tablist">
+							 @foreach($content as $skey => $block)
+							 <li role="presentation" @if($skey == 'main') class="active" @endif><a href="#{{$skey}}" aria-controls="{{$skey}}" role="tab" data-toggle="tab">{{$skey}}</a></li>
+							@endforeach
+						  </ul>
+						
+						<br />
+						
+					   <!-- Tab panes -->
+					     <div class="tab-content">
+					      
+                            @foreach($content as $skey => $block)
+								 <div role="tabpanel" class="tab-pane @if($skey == 'main') active @endif" id="{{$skey}}">
+								 	<table class="table-bordered table-striped" style="width:100%">
+                           				@foreach($block as $c)
+                            				@if( array_key_exists ('key', $c))
+                            					<tr>
+                                					<td width="10%" nowrap style="padding: 10px;">{{$c['key']}}</td>
+                                					<td width="90%" style="padding: 10px;">
+                                    					@include('laikacms::cms.pages.types.'.$c['type'], array('c'=>$c))
+                                					</td>
+                            					</tr>
+                            				@endif
+                            			@endforeach
+									</table>
+							   </div>
+							@endforeach
+						</div>
                     </div>
                 </div>
                 <div role="tabpanel" class="tab-pane" id="seo">
