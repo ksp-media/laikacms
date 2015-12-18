@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class LCMSUserUpdate extends Migration
+class LaikacmsAssetsFolderUpdate extends Migration
 {
     /**
      * Run the migrations.
