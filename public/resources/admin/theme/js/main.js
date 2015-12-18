@@ -46,7 +46,7 @@ $('document').ready(function () {
 
 
     $('#btn-save').click(function () {
-        $.post('/' + \KSPM\LCMS\_prefix + '/cms/content/create', $('#content-form').serialize(), function (response) {
+        $.post('/' + laikacms_prefix + '/cms/content/create', $('#content-form').serialize(), function (response) {
             location.href = location.href;
         })
     })
@@ -73,7 +73,7 @@ $('document').ready(function () {
     })
 
     $('.clear-cache').click(function () {
-        $.get('/' + \KSPM\LCMS\_prefix + '/cms/clearcache', function () {
+        $.get('/' + laikacms_prefix + '/cms/clearcache', function () {
             Jbkcms.UI.sendNotification('Cache wurde gelöscht.');
         })
     })

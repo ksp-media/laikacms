@@ -16,25 +16,11 @@
         <div class="col-lg-3">
             <div class="ibox float-e-margins">
                 <div class="ibox-content">
-                    <div class="file-manager">
-                        <h5 class="inline">Ordner</h5><a href="/{{$cmsprefix}}/assets/folder/{{$folder->id}}/create?view={{$viewtype}}" class="btn btn-default btn-sm pull-right"><i class="fa fa-plus"></i> Neuer Ordner</a>
-                        <ul style="padding: 0" class="folder-list">
-                            @foreach($folderCollection as $folderItem)
-                            <li><a href="/{{$cmsprefix}}/assets/folder/{{$folderItem->id}}?view={{$viewtype}}"><i class="fa fa-folder"></i> {{$folderItem->name}}</a>
-                            @if($folderItem->hasChilds())
-                            <ul>
-                                 @foreach($folderItem->childs() as $pFolderItem)
-                                 <li><a href="/{{$cmsprefix}}/assets/folder/{{$pFolderItem->id}}?view={{$viewtype}}"><i class="fa fa-folder"></i> {{$pFolderItem->name}}</a></li>
-                                 @endforeach
-                            </ul>
-                            @endif
-                            
-                            </li>
-                            @endforeach
-                        </ul>
+                     <div class="dd" id="assets-folder-tree">
 
-                        <div class="clearfix"></div>
+                        {!! \KSPM\LCMS\Model\AssetsFolder::htmlTree() !!}
                     </div>
+        <div class="clearfix"></div>
                 </div>
             </div>
         </div>
@@ -44,7 +30,7 @@
                     @if(isset($folder->name))
                     <h2 class="inline edit-attribute" data-attribute="name" data-id="{{$folder->id}}" contenteditable=true>{{$folder->name}}</h2>
                     @endif
-                    <button class="btn btn-primary btn-lg pull-right btn-upload" data-folder="{{$folder->id}}"><i class="fa fa-plus"></i> Upload Files</button>
+                    <button class="btn btn-primary pull-right btn-upload" data-folder="{{$folder->id}}"><i class="fa fa-plus"></i> Upload Files</button>
                     <div class="clearfix"></div>
                     <hr />
                    {!! $assets->appends(['view' => $viewtype])->render() !!}
@@ -82,7 +68,7 @@
                                 @else
                                  <div class="file-name">
                                         {{$file->filename}}
-                                         <i class="fa fa-trash fa-lg pull-right" style="cursor: pointer" data-action="delete-file" data-id="{{$file->id}}"></i>
+                                         <i class="fa fa-trash-o fa-lg pull-right" style="cursor: pointer" data-action="delete-file" data-id="{{$file->id}}"></i>
                                     </div>
                                 @endif
                              

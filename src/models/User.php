@@ -17,7 +17,7 @@ class User extends Model {
     
     
     public function role(){
-        return $this->hasOne('\KSPM\LCMS\Model\UserRole', 'id', 'laikacms_user_role_id');
+        return $this->hasOne('\KSPM\LCMS\Model\UserRole', 'id', 'user_role_id');
     }
 
     
