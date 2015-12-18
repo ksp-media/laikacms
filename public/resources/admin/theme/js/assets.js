@@ -11,6 +11,7 @@ Jbkcms.Assets = {
     init: function () {
         this.initEditableContent();
         this.initUploadButton();
+        this.initFolderTree();
     },
     initEditableContent: function () {
         $('.edit-attribute').each(function () {
@@ -31,7 +32,7 @@ Jbkcms.Assets = {
     },
     initUploadButton: function () {
         $('.btn-upload').dropzone({
-            url: "/" + laikacms_prefix+ "/assets/upload/" + Jbkcms.Assets.currentFolderId,
+            url: "/" + laikacms_prefix + "/assets/upload/" + Jbkcms.Assets.currentFolderId,
             paramName: "file",
             success: Jbkcms.Assets.handleUpload,
             'previewsContainer': '.upload-preview'
@@ -66,6 +67,28 @@ Jbkcms.Assets = {
 
 
     },
+    
+    initFolderTree: function(){
+         if ($('#assets-folder-tree')) {
+        $('#assets-folder-tree').nestable({
+            group: 1,
+            maxDepth: 100,
+        })
+        $('.tree-item').each(function () {
+            $(this).unbind('click');
+            $(this).unbind('mouseover');
+            $(this).on('click', function () {
+                location.href = '/' + laikacms_prefix + '/assets/folder/' + $(this).attr('data-id') + '?view='+Jbkcms.AssetManager.viewMode;
+            });
+        });
+        $('#assets-folder-tree').on('change', function () {
+            $.post('/' + laikacms_prefix + '/assets/folder/updatetree', {'foldertree': $('#assets-folder-tree').nestable('serialize')}, function (response) {
+            })
+        });
+    }
+    }
+    
+   
 }
 
 Jbkcms.AssetManager = {

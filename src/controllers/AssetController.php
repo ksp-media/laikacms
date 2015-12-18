@@ -107,5 +107,20 @@ class AssetController extends BaseController {
     public function showAssetManager() {
         return \View::make('laikacms::assets.modals.manager', []);
     }
+    
+     public function updateTreeAction(){
+        $this->_updateTreeItemPosition(\Request::get('foldertree'), 0);
+    }
+    
+    private function _updateTreeItemPosition($childs, $parentId) {
+        $pos = 0;
+        foreach ($childs as $item) {
+            AssetsFolder::find($item['id'])->update(['position' => $pos, 'parent_id' => $parentId]);
+            if (key_exists('children', $item)) {
+                $this->_updateTreeItemPosition($item['children'], $item['id']);
+            }
+            $pos++;
+        }
+    }
 
 }

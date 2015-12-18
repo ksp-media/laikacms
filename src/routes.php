@@ -14,7 +14,7 @@ Route::group(['prefix' => _LCMS_PREFIX_], function() {
     Route::post('user/form', '\KSPM\LCMS\Controllers\UserController@saveForm');
     Route::get('cms/page/create', '\KSPM\LCMS\Controllers\CmsController@showCreatePageForm');
     Route::get('cms/page/{id}/edit', '\KSPM\LCMS\Controllers\CmsController@showEditPageForm');
-	Route::get('cms/page/{id}/delete', '\KSPM\LCMS\Controllers\CmsController@deletePageAction');
+    Route::get('cms/page/{id}/delete', '\KSPM\LCMS\Controllers\CmsController@deletePageAction');
     Route::post('cms/page/save', '\KSPM\LCMS\Controllers\CmsController@savePageAction');
     Route::get('cms/content', '\KSPM\LCMS\Controllers\CmsController@listAction');
     Route::get('cms/clearcache', array('as' => 'ajax', 'uses' => '\KSPM\LCMS\Controllers\CmsController@clearCacheAction'));
@@ -30,6 +30,7 @@ Route::group(['prefix' => _LCMS_PREFIX_], function() {
     Route::post('assets/upload/{folder}', '\KSPM\LCMS\Controllers\AssetController@uploadAction');
     Route::get('assets/manager', '\KSPM\LCMS\Controllers\AssetController@showAssetManager');
     Route::post('cms/page/updatetree', '\KSPM\LCMS\Controllers\CmsController@updateTreeAction');
+    Route::post('assets/folder/updatetree', '\KSPM\LCMS\Controllers\AssetController@updateTreeAction');
 });
 
 

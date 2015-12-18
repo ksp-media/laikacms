@@ -19,13 +19,18 @@
 }
 
 #assetmanager-modal #assetmanager-modal-iframe{
-    width: 100%;
+    width: 99%;
     height: 100%;
     border: 0px;
+    padding: 10px;
+}
+
+body.iframe-body{
+    padding: 10px;
 }
 
 body.iframe-body .file-box .file-name{
-    position: relative;
+    vertical-align: middle;
 }
 
 body.iframe-body .file-box .file-name i{
@@ -35,7 +40,7 @@ body.iframe-body .file-box .file-name i{
     color:red; 
     font-size: 18px;
     padding: 10px;
-    background: white;
+    cursor: pointer;
 }
 
 
