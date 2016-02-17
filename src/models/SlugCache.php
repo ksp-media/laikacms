@@ -19,15 +19,14 @@ class SlugCache extends Model {
     
     
     public static function findBySlug($slug){
-        return SlugCache::firstByAttributes(array('slug' => $slug));
+        return SlugCache::where('slug','=',$slug)->first();
     }
     
     public static function findByBaseStr($str){
-        return SlugCache::firstByAttributes(array('base_str' => $str));
+        return SlugCache::where('base_str','=',$str)->first();
     }
     
     public static function findByBaseData($base_str, $base_id){
-        return SlugCache::firstByAttributes(array('base_str' => $base_str, 'base_id' => $base_id));
+        return SlugCache::where('base_str','=',$base_str)->where('base_id','=',$base_id)->first();
     }
-
 }

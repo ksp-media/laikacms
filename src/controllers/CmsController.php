@@ -1,6 +1,7 @@
 <?php
 
 namespace KSPM\LCMS\Controllers;
+use \KSPM\LCMS\Service\TagParserService as TagParserService;
 
 class CmsController extends BaseController {
     /*
@@ -54,14 +55,12 @@ class CmsController extends BaseController {
     
     public function showCreatePageForm(){
         $page = \KSPM\LCMS\Model\Page::create(array());
-        $service = new \KSPM\LCMS\Service\TagParserService($page->template, $page->content);
-        return \View::make('laikacms::cms.pages.form', array('page' => $page, 'content' => $service->getResult()));
+        return \View::make('laikacms::cms.pages.form', array('page' => $page, 'content' => TagParserService::instance()->getResult($page->template, $page->content)));
     }
     
     public function showEditPageForm($id){
         $page = \KSPM\LCMS\Model\Page::find($id);
-        $service = new \KSPM\LCMS\Service\TagParserService($page->template, $page->content);
-        return \View::make('laikacms::cms.pages.form', array('page' => $page, 'content' => $service->getBlocks()));
+        return \View::make('laikacms::cms.pages.form', array('page' => $page, 'content' => TagParserService::instance()->getBlocks($page->template, $page->content)));
     }
 	
     public function deletePageAction($id){
