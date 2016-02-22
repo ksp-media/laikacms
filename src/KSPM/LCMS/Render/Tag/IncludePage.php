@@ -19,7 +19,7 @@ class IncludePage extends Tag implements TagInterface{
          foreach ($this->_results as $r) {
             $page = $r[1];
             $service = new \KSPM\LCMS\Controllers\PageController();
-            $this->addTmplObj(array('origin' => $r[0], 'value' => $service->showAction($page)));
+            $this->addTmplObj(array('origin' => $r[0], 'value' => $service->fetchAction($page)));
         }
     }
     

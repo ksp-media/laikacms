@@ -74,7 +74,7 @@ Jbkcms.Assets = {
             group: 1,
             maxDepth: 100,
         })
-        $('.tree-item').each(function () {
+        $('#assets-folder-tree .tree-item').each(function () {
             $(this).unbind('click');
             $(this).unbind('mouseover');
             $(this).on('click', function () {

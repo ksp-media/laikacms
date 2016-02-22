@@ -14,7 +14,7 @@
 
 
     </head>
-    <body class="fixed-sidebar">
+    <body class="fixed-sidebar minibar">
         <div id="wrapper">
             <nav class="navbar-default navbar-static-side" role="navigation">
                 <div class="sidebar-collapse">
@@ -73,7 +73,9 @@
                         <li> <a href="/{{$cmsprefix}}/logout">
                                 <i class="fa fa-sign-out"></i> <span class="nav-label">Abmelden</span>
                             </a></li>
+                           
                     </ul>
+                    <div class="version">{{config('laikacms.default.version')}} <br />{{config('laikacms.default.copyright')}}</div>
                 </div>
             </nav>
             <div id="page-wrapper" class="gray-bg dashbard-1">
@@ -105,17 +107,16 @@
                     </nav>
                 </div>
                 <div class="row  border-bottom" style="margin-top: 60px; margin-left:30px; width: 97%; position: relative; height: 100%;">
-                    
                     @yield('content')
                 </div>
-                <div class="footer">
+               <!-- <div class="footer">
                     <div class="pull-right">
                         {{config('laikacms.default.version')}}
                     </div>
                     <div>
                         {{config('laikacms.default.copyright')}}
                     </div>
-                </div>
+                </div>-->
 
             </div>
 

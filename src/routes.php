@@ -31,6 +31,7 @@ Route::group(['prefix' => _LCMS_PREFIX_], function() {
     Route::get('assets/manager', '\KSPM\LCMS\Controllers\AssetController@showAssetManager');
     Route::post('cms/page/updatetree', '\KSPM\LCMS\Controllers\CmsController@updateTreeAction');
     Route::post('assets/folder/updatetree', '\KSPM\LCMS\Controllers\AssetController@updateTreeAction');
+    Route::get('/install', '\KSPM\LCMS\Controllers\InstallController@showIndex');
 });
 
 

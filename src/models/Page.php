@@ -62,7 +62,9 @@ class Page extends Model {
         return Page::where('parent', '=', $this->id)->orderBy('position')->get();
     }
     
-    
+    public function getObjects($obj, $filter = false){
+        return \Module\Objects\Service\CmsService::get()->result($obj, $filter);
+    }
     
     public static function htmlTree(){
         $page = new self;

@@ -36,8 +36,17 @@ class CompilerService {
         return $service;
     }
     
+    public static function cleanup($content){
+         $callback = function ($match) {
+			return '';
+        };
+
+       return preg_replace('/\B@(\w+)([ \t]*)(\( ( (?>[^()]+) | (?3) )* \))?/x', '', $content);
+    }
+    
     public function compile(){
-        $result = TagParserService::compile($this->_template, $this->_content);
+        $ps = new TagParserService();
+        $result = $ps->compile($this->_template, $this->_content);
         return $this->_compilePageVars($result);
     }
     

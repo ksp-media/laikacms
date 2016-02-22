@@ -22,24 +22,43 @@ class PageController extends \Illuminate\Routing\Controller {
 
     }
      
-    public function showAction($key = false) {
+    public function showAction($key = false, $object = false) {
         $key = ($key) ? $key : Route::current()->uri();
         if ($key == "/") {
             $key = config('laikacms.default.baseroute');
         }
         //if(\Cache::has($key)){
         //    return \Cache::get($key);
-        // }
+        //}
         $content = \KSPM\LCMS\Model\Page::where('slug', '=', $key)->first();
+        $content->object = $object;
         if (!$content) {
             $content = \KSPM\LCMS\Model\Content::where('key', '=', 'error.pagecontent.notfound')->first();
         }
-
-        $renderResult = \View::make('pages::show', array('content' => Compiler::init($content)->compile()))->render();
         
+        $renderResult = \View::make('pages::show', array('content' => Compiler::init($content)->compile()))->render();
         ob_start();
-        eval('$page=$content;$cmsprefix=_LCMS_PREFIX_; ?>' . $renderResult . '<?php ');
+        eval('$page=$content;$cmsprefix=_LCMS_PREFIX_; ?>' . Compiler::cleanup($renderResult) . '<?php ');
         return ob_get_clean();
+    }
+    
+    public function fetchAction($key = false, $object=false){
+        if (!$key) {
+            return false;
+        }
+        //if(\Cache::has($key)){
+        //    return \Cache::get($key);
+        //}
+        $content = \KSPM\LCMS\Model\Page::where('slug', '=', $key)->first();
+        $content->object = $object;
+        if (!$content) {
+            return false;
+        }
+        $renderResult = \View::make('pages::show', array('content' => Compiler::init($content)->compile()))->render();
+        ob_start();
+        eval('$page=$content;$cmsprefix=_LCMS_PREFIX_; ?>' . Compiler::cleanup($renderResult) . '<?php ');
+        return ob_get_clean();
+
     }
 
 }

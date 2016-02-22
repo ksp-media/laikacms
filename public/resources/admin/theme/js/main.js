@@ -1,4 +1,3 @@
-
 function deleteItem(el) {
     $('input.deleted-dates').val($('input.deleted-dates').val() + ',' + el.attr('data-id'))
     el.parent().parent().remove();
@@ -6,18 +5,13 @@ function deleteItem(el) {
 
 
 $('document').ready(function () {
-    //$('.rte-text').wysihtml5({"size": 'sm', 'html': true});
-
-
     $('#add-date').click(function () {
         var row = $('.daterow-template').clone();
-
         $('table.date-table').append(row);
         var index = $('table.date-table tr').size() + 1;
         row.find('input').each(function () {
             $(this).val('')
             $(this).attr('name', $(this).attr('name').replace('%%ID%%', 'seminar[date][new-' + index))
-
 
         })
         row.removeClass('daterow-template');
@@ -36,15 +30,50 @@ $('document').ready(function () {
 
 $('document').ready(function () {
 
+    if ($('.sidebar')) {
+        $('.sidebar-handle').each(function () {
+            $(this).click(function () {
+                var sidebar = $(this).parent().parent().parent();
+                sidebar.toggleClass('supress');
+                if ($(this).find('i').hasClass('fa-angle-left')) {
+                    $(this).find('i').removeClass('fa-angle-left').addClass('fa-angle-right');
+                } else {
+                    $(this).find('i').removeClass('fa-angle-right').addClass('fa-angle-left');
+                }
+
+                if (sidebar.hasClass('supress')) {
+                    $('.wrapper-content').css('margin-left', parseInt($('.wrapper-content').css('margin-left')) - 160);
+                } else {
+                    $('.wrapper-content').css('margin-left', parseInt($('.wrapper-content').css('margin-left')) + 160);
+                }
+
+                if (sidebar.hasClass('sidebar-tree') && sidebar.hasClass('supress')) {
+                    $('.sub-sidebar').css('left', parseInt($('.sub-sidebar').css('left')) - 160);
+                } else if (sidebar.hasClass('sidebar-tree') && !sidebar.hasClass('supress')) {
+                    $('.sub-sidebar').css('left', parseInt($('.sub-sidebar').css('left')) + 160);
+                }
+            })
+        })
+    }
+
+
+
     $('.navbar-minimalize').click(function () {
+        $('body').toggleClass('minibar');
         if ($('body').hasClass('minibar')) {
-            $('body').removeClass('minibar');
-        } else {
-            $('body').addClass('minibar');
+            if ($('.sidebar-tree').hasClass('supress')) {
+                $('.sub-sidebar').css('left', 120);
+            } else if (!$('.sidebar-tree').hasClass('supress')) {
+                $('.sub-sidebar').css('left', 280);
+            }
+        }else {
+            if ($('.sidebar-tree').hasClass('supress')) {
+                $('.sub-sidebar').css('left', 240);
+            } else if (!$('.sidebar-tree').hasClass('supress')) {
+                $('.sub-sidebar').css('left', 400);
+            }
         }
     })
-
-
     $('#btn-save').click(function () {
         $.post('/' + laikacms_prefix + '/cms/content/create', $('#content-form').serialize(), function (response) {
             location.href = location.href;
@@ -89,7 +118,8 @@ $('document').ready(function () {
             group: 1,
             maxDepth: 100,
         })
-        $('.tree-item').each(function () {
+        $('#page-structure .tree-item').each(function () {
+            console.log('foo');
             $(this).unbind('click');
             $(this).unbind('mouseover');
             $(this).on('click', function () {

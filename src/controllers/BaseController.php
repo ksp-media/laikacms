@@ -19,7 +19,7 @@ class BaseController extends \Illuminate\Routing\Controller {
     public function auth(\Illuminate\Routing\Route $route, $request) {
         $action = explode('@', $route->getActionName());
        
-        $whiteList = ['showLogin', 'loginAction', 'logoutAction'];
+        $whiteList = ['showLogin', 'loginAction', 'logoutAction', 'showInstall'];
         if (\Session::get('cmslogin') == null && (!in_array($action[1], $whiteList))) {
             return \Redirect::to('/'._LCMS_PREFIX_.'/login');
         }

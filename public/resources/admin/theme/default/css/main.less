@@ -16,13 +16,17 @@ body.iframe-body{
 }
 
 .modal-backdrop{
-	display:none !Important;
+    display:none !Important;
 }
 
 
 /**
 * MAIN LAYOUT
 **/
+
+.wrapper-content{
+    transition: margin .2s ease-in-out;
+}
 
 #wrapper{
     width: 100%;
@@ -34,6 +38,17 @@ body.iframe-body{
         background: black; 
         height: 100%;
         transition: width .2s ease-in-out;
+        
+        .version{
+                position:absolute;
+                bottom: 20px;
+                width: 100%;
+                text-align: center;
+                font-size: 10px;
+                color: lightgrey;
+            }
+        
+        
         #side-menu{
             li{
                 a{
@@ -130,6 +145,8 @@ body.iframe-body{
         .navbar{
             min-height: 40px;
             margin: 0 0 0 15px;
+            
+            
         }
 
         .navbar-header{
@@ -275,13 +292,13 @@ body.minibar{
         vertical-align: middle;
         width: 100%;
         height: auto;
-        
+
         img{
             width: 100%;
-        height: auto;
+            height: auto;
         }
     }
-    
+
     .icon{
         font-size: 100px;
         color: grey;
@@ -352,12 +369,12 @@ h1,h2,h3,h4,h5{
             font-weight: 200;
         }
     }
-    
+
     .ibox-content{
         background:#fff;
 
         .tab-content{
-            
+
         }
 
         .nav {
@@ -366,32 +383,107 @@ h1,h2,h3,h4,h5{
     }
 }
 
-.sub-sidebar{
+.sidebar{
     top:57px;
-    left:200px;
-    width: 260px;
+    width: 200px;
     height: 100%;
     position: fixed;
     z-index:10;
-    transition: left .2s ease-in-out;
-    padding: 20px;
-    overflow:auto;
+    transition: all .2s ease-in-out;
+    padding: 0px;
+    overflow: auto;
+    background: #f0f0f0;
+    .btn-toolbar{
+        background: #f0f0f0;
+        border-bottom: solid 1px #e0e0e0;
+        padding: 5px 5px;
+        height: 30px;
+        a{
+            color: darkgrey;
+            font-size: 12px;
+            height: 25px;
+            .fa{
+                font-size: 18px;
+            } 
+        }
+        a.sidebar-handle{
+            cursor:pointer;
+            width: 20px;
+            display:block;
+        }
 
+    }
+
+    &.supress{
+        width: 40px;
+        .sidebar-content{
+            display:none;
+        }
+        .btn-toolbar{
+            .btn-group{
+                display:none;
+            }
+            > .handler{
+                display:block;
+            }
+        }
+    }
+}
+
+.sidebar-tree{
+    left:200px;
+    background: #444;
+    
+    .btn-toolbar{
+        background: #444;
+        border-bottom: solid 1px #555;
+    }
+    .dd-handle{
+        margin:0px;
+        background:none;
+        border:0px;
+        height: auto;
+
+    }
+
+    .dd-list .dd-list {
+        padding-left: 25px;
+
+    }
+    .dd-content > span,
+    .dd-handle > i.fa,
+    .dd-item > button{
+        color: #fff;
+        font-weight: 400;
+    }
+
+
+}
+
+.sub-sidebar{
+    left:400px;
 
     .panel{
+        margin: 0px;
+        border: 0px;
         .panel-heading{
             text-transform: uppercase;
             font-weight: bold;
             font-size: 90%;
         }
-        
 
+        .panel-body {
+            padding: 5px;
+            background: #fafafa;
+        }
     }
+
+
 
     .bottom-spacer{
         height: 200px;
     }
-    
+
     li.list-group-item{
         padding: 5px 8px;
     }
@@ -417,6 +509,10 @@ body #wrapper #page-wrapper .sub-sidebar .nav{
 
 body.minibar{
     .sub-sidebar{
+        left:280px;
+    }
+
+    .sidebar-tree{
         left:80px;
     }
 }

@@ -23,7 +23,6 @@ Jbkcms.Search = {
         $('#search-result').remove();
         $('#top-search').parent().append('<ul id="search-result"></ul>')
         $('ul#search-result').append(result).mouseleave(function(){$(this).fadeOut()}); 
-        
     }
 }
 
