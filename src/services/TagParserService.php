@@ -81,7 +81,9 @@ class TagParserService {
 
     public function getBlocks($template, $contents) {
         $this->_template = $template;
-        $this->_contents = $contents;
+        $this->_originTemplate = $template;
+        $this->_renderedTags = $template;
+        $this->_contents = unserialize($contents);
         $this->_registerTags();
         $blocks = $this->_getBlockInfo($this->_template);
         if (count($blocks) === 0) {
