@@ -80,7 +80,7 @@
             </nav>
             <div id="page-wrapper" class="gray-bg dashbard-1">
                 <div class="row border-bottom">
-                    <nav class="navbar navbar-static-top white-bg" role="navigation" style="">
+                    <nav class="navbar navbar-static-top dark-style" role="navigation" style="">
                         <div class="navbar-header">
                             <a class="navbar-minimalize minimalize-styl-2 btn btn-primary " href="#"><i class="fa fa-bars"></i> </a>
                             <form role="search" class="navbar-form-custom" method="get" action="javascript:void(0)">
@@ -239,5 +239,6 @@
             }
 
         </style>
+         @yield('modal')
     </body>
 </html>

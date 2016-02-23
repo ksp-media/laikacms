@@ -3,9 +3,10 @@
 @section('content')
 
 <div class="wrapper wrapper-content">
+        @yield('sub-sidebar')
         <div class="row">
             
-            <div class="col-lg-12 animated fadeInRight">
+            <div class="col-lg-12 animated">
                 <div class="mail-box">
                                     @yield('mod-content')
                 </div>

@@ -15,6 +15,10 @@ class Page extends Model {
     protected $primaryKey = 'id';
     protected $guarded = array();
     
+    public function versions(){
+       return $this->hasMany('KSPM\LCMS\Model\PageVersion', 'origin_id', 'id');
+   }
+    
     public static function getPageTree(){
         $data = [];
         $i = 0;
@@ -98,6 +102,28 @@ class Page extends Model {
                                         
                                     </div><div class="dd-content"><span class="tree-item" data-id="##id##">##title##</span></div>';
         return str_replace('##title##', $data->title, str_replace('##id##', $data->id, $html));
+    }
+    
+    public function addVersion(){
+        PageVersion::create([
+            'origin_id'         => $this->id,
+            'title'             => $this->title,
+            'template'          => $this->template,
+            'content'           => $this->content,
+            'meta_title'        => $this->meta_title,
+            'meta_description'  => $this->metadata
+        ]);
+    }
+    
+    public function useVersion($versionId){
+        $version = PageVersion::find($versionId);
+        $this->update([
+            'title'             => $version->title,
+            'template'          => $version->template,
+            'content'           => $version->content,
+            'meta_title'        => $version->meta_title,
+            'meta_description'  => $version->metadata
+        ]);
     }
     
 }

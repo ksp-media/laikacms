@@ -2,6 +2,7 @@
 
 namespace KSPM\LCMS\Controllers;
 use \KSPM\LCMS\Service\TagParserService as TagParserService;
+use \KSPM\LCMS\Model\PageVersion as PageVersion;
 
 class CmsController extends BaseController {
     /*
@@ -81,12 +82,15 @@ class CmsController extends BaseController {
                 $data['slug'] = \KSPM\LCMS\Helper\GlobalHelper::generateSlugFromString($data['title']) . '.html';
             }
             if( key_exists('content', $data)){
-                $service = new \KSPM\LCMS\Service\TagParserService($page->template, serialize($data['content']));
-                $data['compiled_template'] =  $service->render();
+                //$service = new \KSPM\LCMS\Service\TagParserService($page->template, serialize($data['content']));
+                //$data['compiled_template'] =  $service->render();
                 $data['content'] = serialize($data['content']);
             }
             
             $page->update($data);
+            $page->addVersion();
+            
+            
             return \Redirect::to("/"._LCMS_PREFIX_."/cms/page/{$page->id}/edit")->with('message', 'Page succesfully updated now');
         }else{
             return \Redirect::to("/"._LCMS_PREFIX_."/cms/pages")->with('message', 'page not found!');
@@ -97,6 +101,16 @@ class CmsController extends BaseController {
 
     public function updateTreeAction(){
         $this->_updateTreeItemPosition(\Request::get('pagetree'), 0);
+    }
+    
+    public function useVersionAction($id, $versionid){
+        if($id && $versionid){
+            $page = \KSPM\LCMS\Model\Page::find($id);
+            $page->addVersion();
+            $page->useVersion($versionid);
+            return \Redirect::to("/"._LCMS_PREFIX_."/cms/page/{$page->id}/edit")->with('message', 'Page succesfully restored from history');
+     
+        }
     }
     
     private function _updateTreeItemPosition($childs, $parentId) {

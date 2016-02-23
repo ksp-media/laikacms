@@ -1,6 +1,7 @@
 @extends('laikacms::layouts.pages')
 @section('action-nav')
-<li><a  href="/{{$cmsprefix}}/cms/page/create">+ Neue Seite</a></li>
+<li><a href="/{{$cmsprefix}}/cms/page/create">+ Neue Seite</a></li>
+<li><a data-toggle="modal" data-target="#versions-modal"><i class="fa fa-history"></i> Versionen</a></li>
 @stop
 
 @section('sub-sidebar')
@@ -311,3 +312,6 @@
                     }
 </script>
 @stop
+@section('modal')
+@include('laikacms::cms.pages.modal.versions')
+@endsection

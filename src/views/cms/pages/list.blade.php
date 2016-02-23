@@ -2,32 +2,33 @@
 @section('action-nav')
 <li><a class="" href="/{{$cmsprefix}}/cms/page/create">+ Neue Seite</a></li>
 @stop
-@section('mod-content')
-
-
-
-<div class="ibox float-e-margins">
-    <div class="ibox-title">
-        <h5>Seiten</h5>
+@section('sub-sidebar')
+<div class="sidebar sidebar-tree">
+    <div class="btn-toolbar" role="toolbar">
+        <div class="btn-group btn-group-xs" role="group" aria-label="...">
+            <a href="/{{$cmsprefix}}/cms/page/create">+ Neue Seite</a>
+        </div>
+        <div class="btn-group btn-group-xs pull-right handler" role="group" aria-label="...">
+            <a class="sidebar-handle"><i class="fa fa-angle-left"></i></a>
+        </div>
 
     </div>
-    <div class="ibox-content">
-        <div class="dd" id="page-structure">
-
-                        {!! \KSPM\LCMS\Model\Page::htmlTree() !!}
-                    </div>
-        <div class="clearfix"></div>
+    <div class="dd sidebar-content" id="page-structure">
+        {!! \KSPM\LCMS\Model\Page::htmlTree() !!}
     </div>
 </div>
+@endsection
+@section('mod-content')
+
 <script>
 $(document).ready(function () {
-    $('.dd-item').each(function(){
+   /** $('.dd-item').each(function(){
         $(this).append('<div class="dd-item-actions">\n\
 <i class="fa fa-edit fa-lg item-edit"></i>&nbsp;\n\
 <i class="fa fa-eye fa-lg item-preview"></i>\n\
 <i class="fa fa-trash fa-lg item-trash"></i>\n\
 </div>');
-    });
+    }); 
     
     $('.item-edit').each(function(){$(this).click(function(){location.href = "/{{$cmsprefix}}/cms/page/"+$(this).parent().parent().attr('data-id')+"/edit"})})
     $('.item-trash').each(function(){$(this).click(function(){
@@ -35,7 +36,7 @@ $(document).ready(function () {
                 location.href = "/{{$cmsprefix}}/cms/page/"+$(this).parent().parent().attr('data-id')+"/delete";
             }
             
-        })})
+        })})**/
 })
 </script>
 <style>

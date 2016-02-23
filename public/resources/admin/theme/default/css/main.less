@@ -19,7 +19,6 @@ body.iframe-body{
     display:none !Important;
 }
 
-
 /**
 * MAIN LAYOUT
 **/
@@ -340,6 +339,26 @@ body.minibar{
 * DEFAULtS
 **/
 
+.navbar-static-top{
+    &.dark-style{
+        background: black;
+        .fa-bars{
+            color:#f0f0f0;
+        }
+        .nav.navbar-right > li > a{
+            color: #f0f0f0;
+            cursor: pointer;
+        }
+        .nav.navbar-right > li > a:hover{
+            background: #444;
+        }
+        #top-search{
+            background:black;
+            line-height: 35px;
+        }
+    }
+}
+
 .white-bg{
     background: white;
 }
@@ -434,6 +453,11 @@ h1,h2,h3,h4,h5{
     left:200px;
     background: #444;
     
+    &.assets{
+        left:0px;
+        top:0px;
+        position: fixed;
+    }
     .btn-toolbar{
         background: #444;
         border-bottom: solid 1px #555;

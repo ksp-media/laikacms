@@ -1,5 +1,4 @@
 <?php
-
 namespace KSPM\LCMS\Model;
 
 use Illuminate\Database\Eloquent\Model;

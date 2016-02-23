@@ -16,6 +16,7 @@ Route::group(['prefix' => _LCMS_PREFIX_], function() {
     Route::get('cms/page/{id}/edit', '\KSPM\LCMS\Controllers\CmsController@showEditPageForm');
     Route::get('cms/page/{id}/delete', '\KSPM\LCMS\Controllers\CmsController@deletePageAction');
     Route::post('cms/page/save', '\KSPM\LCMS\Controllers\CmsController@savePageAction');
+    Route::get('cms/page/{id}/version/{versionid}/use', '\KSPM\LCMS\Controllers\CmsController@useVersionAction');
     Route::get('cms/content', '\KSPM\LCMS\Controllers\CmsController@listAction');
     Route::get('cms/clearcache', array('as' => 'ajax', 'uses' => '\KSPM\LCMS\Controllers\CmsController@clearCacheAction'));
     Route::get('cms/pages', '\KSPM\LCMS\Controllers\CmsController@listPagesShow');

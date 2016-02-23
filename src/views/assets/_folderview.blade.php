@@ -11,20 +11,26 @@
     </head>
      <body class="iframe-body">
 @endif
+
 <div class="wrapper wrapper-content">
     <div class="row">
         <div class="col-lg-3">
             <div class="ibox float-e-margins">
                 <div class="ibox-content">
-                     <div class="dd" id="assets-folder-tree">
-
+                    @if(isset($viewtype) && $viewtype == "embeded")
+                    <div class="sidebar sidebar-tree assets">
+                    @endif
+                    <div class="dd" id="assets-folder-tree" style="position: fixed; width: 20%">
                         {!! \KSPM\LCMS\Model\AssetsFolder::htmlTree() !!}
                     </div>
+                     @if(isset($viewtype) && $viewtype == "embeded")
+                    </div>
+                    @endif
         <div class="clearfix"></div>
                 </div>
             </div>
         </div>
-        <div class="col-lg-9 animated fadeInRight">
+        <div class="col-lg-9">
             <div class="row">
                 <div class="col-lg-12">
                     @if(isset($folder->name))
