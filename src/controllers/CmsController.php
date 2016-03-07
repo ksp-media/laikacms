@@ -86,6 +86,7 @@ class CmsController extends BaseController {
                 //$data['compiled_template'] =  $service->render();
                 $data['content'] = serialize($data['content']);
             }
+            $data['showinnav'] = (key_exists('showinnav', $data))?true:false;
             
             $page->update($data);
             $page->addVersion();

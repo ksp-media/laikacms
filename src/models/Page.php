@@ -66,6 +66,17 @@ class Page extends Model {
         return Page::where('parent', '=', $this->id)->orderBy('position')->get();
     }
     
+    public function hasNavChilds(){
+        return (Page::where('parent', '=', $this->id)->where('showinnav', '=', 1)->count() > 0)?true:false;
+    }
+    
+    public function navChilds(){
+        return Page::where('parent', '=', $this->id)
+                ->where('showinnav', '=', 1)
+                ->orderBy('position')
+                ->get();
+    }
+    
     public function getObjects($obj, $filter = false){
         return \Module\Objects\Service\CmsService::get()->result($obj, $filter);
     }

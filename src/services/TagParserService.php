@@ -25,6 +25,7 @@ class TagParserService {
         '\KSPM\LCMS\Render\Tag\EditableAsset',
         '\KSPM\LCMS\Render\Tag\Content',
         '\KSPM\LCMS\Render\Tag\IncludePage',
+        '\KSPM\LCMS\Render\Tag\Navigation',
     );
 
     public function __construct() {

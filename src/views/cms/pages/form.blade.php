@@ -108,7 +108,9 @@
                             @endif
                             @endforeach
                         </select>
-
+                        
+                        <input type="checkbox" name="page[showinnav]" value="1" @if($page->showinnav) checked @endif />
+                        <label>Anzeigen in Navigation</label> 
                     </div>
                 </div>
                 <div role="tabpanel" class="tab-pane active" id="content">
