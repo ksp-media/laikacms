@@ -37,17 +37,17 @@ body.iframe-body{
         background: black; 
         height: 100%;
         transition: width .2s ease-in-out;
-        
+
         .version{
-                position:absolute;
-                bottom: 20px;
-                width: 100%;
-                text-align: center;
-                font-size: 10px;
-                color: lightgrey;
-            }
-        
-        
+            position:absolute;
+            bottom: 20px;
+            width: 100%;
+            text-align: center;
+            font-size: 10px;
+            color: lightgrey;
+        }
+
+
         #side-menu{
             li{
                 a{
@@ -144,8 +144,8 @@ body.iframe-body{
         .navbar{
             min-height: 40px;
             margin: 0 0 0 15px;
-            
-            
+
+
         }
 
         .navbar-header{
@@ -452,7 +452,7 @@ h1,h2,h3,h4,h5{
 .sidebar-tree{
     left:200px;
     background: #444;
-    
+
     &.assets{
         left:0px;
         top:0px;
@@ -481,7 +481,38 @@ h1,h2,h3,h4,h5{
         font-weight: 400;
     }
 
+    .panel-default{
+        background: #555;
+        color: white;
+        border: 0px;
+        border-radius: 0px;
 
+        .panel-heading{
+            color: white;
+            border: 0px;
+            border-radius: 0px;
+            background: #555;
+        }
+
+        .list-group .list-group-item{
+            background: #3F3F3F;
+            color:white;
+            border: 0px;
+            border-radius: 0px;
+
+            > a{
+                color:white;
+                font-weight: normal;
+
+
+                label{
+                    font-weight: normal;
+                    font-size: 12px;
+                    cursor:pointer;
+                }
+            }
+        }
+    }
 }
 
 .sub-sidebar{

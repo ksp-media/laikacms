@@ -29,7 +29,22 @@ class BaseController extends \Illuminate\Routing\Controller {
             var_dump(__METHOD__);
             return \Artisan::call('laikacms:deploy', []);
             
+    }
+    
+    public function backendSearchAction(){
+        $modules = ModuleService::getInstance()->getBackendModules();
+        $result = [];
+        foreach($modules as $module){
+            if(!$module) continue;
+            if(property_exists($module, 'search') && (property_exists($module->search, 'controllerAction'))){
+                $c = explode('@', $module->search->controllerAction);
+                $controller = new $c[0];
+                $action = $c[1];
+                $result = $controller->$action($_GET['q']);
+            }
         }
+        var_dump($result);
+    }
 
     /**
      * Setup the layout used by the controller.

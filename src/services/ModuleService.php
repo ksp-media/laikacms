@@ -34,14 +34,13 @@ class ModuleService {
                 $data[] = $module['backend'];
             }
         }
-        
-        $this->_addViewNamespaces();
         return $data;
     }
 
     private function _setModuleList() {
         if (\Cache::has('modules.backend.list')) {
             $this->_moduleList = \Cache::get('modules.backend.list');
+            $this->_addViewNamespaces();
             return;
         }
 
@@ -64,6 +63,7 @@ class ModuleService {
 
         $this->_moduleList = $result;
         \Cache::forever('modules.backend.list', $result);
+        $this->_addViewNamespaces();
 
     }
 

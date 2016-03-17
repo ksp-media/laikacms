@@ -143,6 +143,8 @@ $('document').ready(function () {
     });
 })
 
+var LCMS = {}
+
 var Jbkcms = {}
 
 Jbkcms.UI = {

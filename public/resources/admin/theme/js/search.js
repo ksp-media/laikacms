@@ -1,9 +1,9 @@
-Jbkcms.Search = {
+LCMS.Search = {
     
     
     init: function(){
         $('#top-search').keyup(function(){
-            Jbkcms.Search.request($('#top-search').val());
+            LCMS.Search.request($('#top-search').val());
         })
     },
     
@@ -12,11 +12,9 @@ Jbkcms.Search = {
     },
     
     request: function(val){
-        if(this.config.route){
-            $.get('/'+ laikacms_prefix+'/'+this.config.route + '?q=' + val, function(response){
-                Jbkcms.Search.responseHandler(response)
-            })
-        }
+        $.get('/'+ laikacms_prefix+'/search/ajax?q=' + val, function(response){
+            LCMS.Search.responseHandler(response)
+        })
     },
     
     responseHandler: function(result){
@@ -27,6 +25,6 @@ Jbkcms.Search = {
 }
 
 $(document).ready(function(){
-    Jbkcms.Search.init();
+    LCMS.Search.init();
 })
 
