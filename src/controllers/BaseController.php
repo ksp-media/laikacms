@@ -2,11 +2,16 @@
 namespace KSPM\LCMS\Controllers;
 
 use KSPM\LCMS\Service\ModuleService as ModuleService;
+use KSPM\LCMS\Service\InstallService as InstallService;
 
 class BaseController extends \Illuminate\Routing\Controller {
 
     public function __construct() {
-        $this->beforeFilter('@auth');
+        //$this->beforeFilter('@auth');
+        if(!InstallService::isInstalled()){
+            InstallService::install();
+            die;
+        }
         \View::share('module_defintion', ModuleService::getInstance()->getBackendModules());
         
         $reflectionClass = new \ReflectionClass(get_called_class());

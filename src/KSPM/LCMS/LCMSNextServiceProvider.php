@@ -22,7 +22,7 @@ class LCMSNextServiceProvider extends ServiceProvider {
      */
     public function boot() {
         //$this->package('kspm/laikacms');
-        include app_path() . '/Http/routes.php';
+        include app_path() . '/../routes/web.php';
         include __DIR__ . '/../../routes.php';
         $this->registerBladeExtensions();
         $this->loadViewsFrom(__DIR__ . '/../../views', 'laikacms');
@@ -37,6 +37,9 @@ class LCMSNextServiceProvider extends ServiceProvider {
          $this->publishes([
         __DIR__.'/../../migrations/' => database_path('/migrations')
         ], 'migrations');
+         $this->publishes([
+        __DIR__.'/../../views/frontend' => resource_path('views/vendor/laikacms'),
+        ], 'views');
 
     }
 

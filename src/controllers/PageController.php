@@ -7,7 +7,7 @@ use KSPM\LCMS\Service\CompilerService as Compiler;
 class PageController extends \Illuminate\Routing\Controller {
 
     public function __construct() {
-        \View::addNamespace('pages', app_path() . '/../modules/pages/views');
+        \View::addNamespace('pages', base_path() . '/resources/views/vendor/laikacms/');
     }
 
     /**

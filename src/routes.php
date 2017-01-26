@@ -36,4 +36,6 @@ Route::group(['prefix' => _LCMS_PREFIX_], function() {
     Route::get('/search/ajax', '\KSPM\LCMS\Controllers\BaseController@backendSearchAction');
 });
 
+Route::get('{all}', array('as' => 'page', 'uses' => '\KSPM\LCMS\Controllers\PageController@showAction'))->where('all', '.*');
+
 

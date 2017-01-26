@@ -45,6 +45,10 @@ class ModuleService {
         }
 
         $moduleDir = app_path() . '/../modules/';
+        if(!is_dir($moduleDir)){
+            mkdir($moduleDir);
+            chmod($moduleDir, '775');
+        }
         $result = array();
         if ($handle = opendir($moduleDir)) {
             while (false !== ($dir = readdir($handle))) {
