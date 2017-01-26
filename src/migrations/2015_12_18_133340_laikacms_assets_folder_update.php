@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class LCMSAssetsFolderUpdate extends Migration
+class LaikacmsAssetsFolderUpdate extends Migration
 {
     /**
      * Run the migrations.
@@ -17,7 +17,7 @@ class LCMSAssetsFolderUpdate extends Migration
         }
         
         Schema::table('laikacms_assets_folder', function (Blueprint $table) {
-              $table->renameColumn('jbkcms_user_role_id', 'user_role_id');
+            $table->integer('position')->default(0);
         });
     }
 
@@ -28,7 +28,7 @@ class LCMSAssetsFolderUpdate extends Migration
      */
     public function down()
     {
-        Schema::table('laikacms_page', function (Blueprint $table) {
+        Schema::table('laikacms_assets_folder', function (Blueprint $table) {
             //
         });
     }

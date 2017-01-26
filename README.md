@@ -38,3 +38,5 @@ Call the Adminpage
 
 	http://<yourdomain>/admin
 
+Developed by KSP Media UG as free software under the GNU General Public License version 2
+
